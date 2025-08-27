@@ -18,9 +18,7 @@ springdoc:
 logging:
   level:
     info.eecc.weather: INFO
-    org.springframework.web: DEBUG
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    org.springframework.web: INFO
 
 management:
   endpoints:

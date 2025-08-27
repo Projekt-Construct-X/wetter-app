@@ -5,6 +5,7 @@ info/eecc/weather/dto/WeatherResponse$CurrentWeather.class
 info/eecc/weather/config/OpenApiConfig.class
 info/eecc/weather/dto/WeatherResponse$CurrentWeatherUnits.class
 info/eecc/weather/service/WeatherService.class
+info/eecc/weather/dto/GeocodingResponse$Result.class
 info/eecc/weather/exception/GlobalExceptionHandler.class
 info/eecc/weather/dto/CurrentWeatherDto$CurrentWeatherDtoBuilder.class
 info/eecc/weather/dto/CurrentWeatherDto.class
