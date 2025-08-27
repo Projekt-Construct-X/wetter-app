@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: info.eecc.weather.controller.WeatherControllerTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.533 s -- in info.eecc.weather.controller.WeatherControllerTest

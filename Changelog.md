@@ -2,6 +2,14 @@
 
 ## WIP
 
+- Comprehensive unit test suite with mocked API responses
+
+  - Added Mockito dependency for API mocking
+  - Created `WeatherServiceTest` with mocked RestTemplate for unit testing external API calls
+  - Created `WeatherControllerTest` with MockMvc for testing REST endpoints with mocked service layer
+  - Created `GlobalExceptionHandlerTest` for testing error handling scenarios
+  - Tests cover success scenarios, error conditions, validation failures, and API errors
+
 - Initial comprehensive notes documentation
   - Created `.cursor/notes/` directory with complete project documentation
   - Added `index.md` with project overview and navigation

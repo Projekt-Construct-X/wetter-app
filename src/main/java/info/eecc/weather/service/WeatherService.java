@@ -6,6 +6,7 @@ import info.eecc.weather.dto.WeatherResponse;
 import info.eecc.weather.exception.WeatherException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -34,7 +35,8 @@ public class WeatherService {
             WeatherResponse response = restTemplate.getForObject(url, WeatherResponse.class);
 
             if (response == null || response.getCurrentWeather() == null) {
-                throw new WeatherException("No weather data available for the specified coordinates");
+                throw new WeatherException(HttpStatus.NOT_FOUND,
+                        "No weather data available for the specified coordinates");
             }
 
             return mapToCurrentWeatherDto(response, String.format("%.4f, %.4f", latitude, longitude));
@@ -42,7 +44,8 @@ public class WeatherService {
         } catch (Exception e) {
             log.error("Error fetching weather data for coordinates lat={}, lon={}: {}", latitude, longitude,
                     e.getMessage());
-            throw new WeatherException("Failed to fetch weather data: " + e.getMessage(), e);
+            throw new WeatherException(HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Failed to fetch weather data: " + e.getMessage(), e);
         }
     }
 
@@ -58,7 +61,8 @@ public class WeatherService {
 
         } catch (Exception e) {
             log.error("Error fetching weather data for city {}: {}", city, e.getMessage());
-            throw new WeatherException("Failed to fetch weather data for city: " + city, e);
+            throw new WeatherException(HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Failed to fetch weather data for city: " + city, e);
         }
     }
 
@@ -73,7 +77,7 @@ public class WeatherService {
         GeocodingResponse response = restTemplate.getForObject(url, GeocodingResponse.class);
 
         if (response == null || response.getResults() == null || response.getResults().isEmpty()) {
-            throw new WeatherException("City not found: " + city);
+            throw new WeatherException(HttpStatus.NOT_FOUND, "City not found: " + city);
         }
 
         return response.getResults().get(0);

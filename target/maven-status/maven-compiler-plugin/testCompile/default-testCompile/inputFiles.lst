@@ -1,1 +1,4 @@
 /home/dennis/Workspace/construct-x/wetter-app/src/test/java/info/eecc/weather/WeatherApplicationTests.java
+/home/dennis/Workspace/construct-x/wetter-app/src/test/java/info/eecc/weather/controller/WeatherControllerTest.java
+/home/dennis/Workspace/construct-x/wetter-app/src/test/java/info/eecc/weather/exception/GlobalExceptionHandlerTest.java
+/home/dennis/Workspace/construct-x/wetter-app/src/test/java/info/eecc/weather/service/WeatherServiceTest.java

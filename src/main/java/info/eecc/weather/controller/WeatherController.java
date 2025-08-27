@@ -5,6 +5,7 @@ import info.eecc.weather.exception.WeatherException;
 import info.eecc.weather.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -61,13 +62,14 @@ public class WeatherController {
         boolean hasCity = city != null && !city.trim().isEmpty();
 
         if (!hasCoordinates && !hasCity) {
-            throw new WeatherException("Either latitude+longitude OR city must be provided");
+            throw new WeatherException(HttpStatus.BAD_REQUEST, "Either latitude+longitude OR city must be provided");
         }
         if (hasCoordinates && hasCity) {
-            throw new WeatherException("Provide either latitude+longitude OR city, not both");
+            throw new WeatherException(HttpStatus.BAD_REQUEST, "Provide either latitude+longitude OR city, not both");
         }
         if (hasCoordinates && (latitude == null || longitude == null)) {
-            throw new WeatherException("Both latitude and longitude must be provided when using coordinates");
+            throw new WeatherException(HttpStatus.BAD_REQUEST,
+                    "Both latitude and longitude must be provided when using coordinates");
         }
 
         CurrentWeatherDto weather;
@@ -77,7 +79,8 @@ public class WeatherController {
             if (latitude != null && longitude != null) {
                 weather = weatherService.getCurrentWeather(latitude, longitude);
             } else {
-                throw new WeatherException("Internal error: coordinates validation failed");
+                throw new WeatherException(HttpStatus.INTERNAL_SERVER_ERROR,
+                        "Internal error: coordinates validation failed");
             }
         } else {
             log.info("Fetching current weather for city: {}", city);

@@ -19,10 +19,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleWeatherException(WeatherException ex) {
         log.error("Weather service error: {}", ex.getMessage());
         Map<String, String> error = new HashMap<>();
-        error.put("error", ex.getMessage());
+        String message = ex.getMessage() != null ? ex.getMessage() : "Weather service error";
+        error.put("error", message);
 
-        // Determine status code based on error message
-        HttpStatus status = ex.getMessage().contains("not found") ? HttpStatus.NOT_FOUND : HttpStatus.BAD_REQUEST;
+        // Use the HttpStatus from the exception
+        HttpStatus status = ex.getHttpStatus() != null ? ex.getHttpStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
 
         return ResponseEntity.status(status).body(error);
     }

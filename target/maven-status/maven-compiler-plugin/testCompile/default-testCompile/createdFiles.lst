@@ -1,1 +1,4 @@
 info/eecc/weather/WeatherApplicationTests.class
+info/eecc/weather/controller/WeatherControllerTest.class
+info/eecc/weather/service/WeatherServiceTest.class
+info/eecc/weather/exception/GlobalExceptionHandlerTest.class
