@@ -2,6 +2,13 @@
 
 ## WIP
 
+- Fixed Docker image naming in CI/CD pipeline
+
+  - Removed hardcoded image name from `pom.xml` Spring Boot plugin configuration
+  - Pipeline now properly overrides image name with `-Dspring-boot.build-image.imageName` parameter
+  - Image will be correctly named as `ghcr.io/projekt-construct-x/wetter-app` instead of `info.eecc/weather`
+  - Fixes Docker registry push failures due to name mismatch
+
 - Added GitHub Actions CI/CD pipeline
 
   - Created `.github/workflows/build-and-push.yml` for automated testing and Docker image building

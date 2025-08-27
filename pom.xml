@@ -95,7 +95,6 @@
 					</excludes>
 					<!-- Enable image building -->
 					<image>
-						<name>info.eecc/${project.artifactId}:${project.version}</name>
 						<env>
 							<SPRING_PROFILES_ACTIVE>production</SPRING_PROFILES_ACTIVE>
 						</env>
