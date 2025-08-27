@@ -1,0 +1,69 @@
+---
+globs: *.java
+alwaysApply: false
+---
+
+# General Java Coding Guidelines
+
+## Java package structure
+
+When creating a new java file, always make sure that the file has the correct package header e.g. a `.java` file in the `src/main/java/info/eecc/gs1/dpp/wl/backend/controller` folder needs to have
+
+```
+package info.eecc.gs1.dpp.wl.backend.controller
+```
+
+as its first line.
+
+## Casing and Names
+
+Use standard Java casing. In particular class names are upper camel case, attribute names are lower camel case, etc.
+
+## One Class per File
+
+Always put classes in their own files. **Never use nested classes** - each class should have its own dedicated file.
+
+- **Main classes**: Each public class goes in its own `.java` file
+- **Test classes**: Each test class goes in its own file, even if testing related functionality
+- **Inner/Nested classes**: Avoid completely - extract to separate files instead
+- **Static nested classes**: Also avoid - create separate files for better maintainability
+
+This applies to all types of classes including:
+
+- Regular classes
+- Test classes
+- Utility classes
+- Exception classes
+- Configuration classes
+
+**Example**: Instead of `DppServiceTest.TriggerActionTests`, create `DppServiceTriggerActionTest.java`
+
+## Lombok
+
+Prefer Lombok Annotations, e.g. use `@Data` to generate Getters, Setters, EqualsAndHashCode, RequiredArgsConstructor instead of implementing those explicitly.
+
+## Logging
+
+Anotate all Calsses with `@Slf4j` to have a `log` object avaiable. Add `log.trace` or `log.debug` anotations that might help in debugging when generating new code.
+
+## Use recent Java Version Constructs
+
+Prefer using modern Java constructions and patterns.
+
+- Use `toList()` on streams instead of `collect(Collectors.toList())`
+
+## Cleanup
+
+Always run the organize imports and format code IDE functions to clean up after changing code. Check for linter errors and fix them.
+
+## Exception Handling
+
+**Always use DppException for business logic errors instead of generic RuntimeException.**
+
+- Example: `throw new DppException(HttpStatus.NOT_FOUND, "DPP not found with ID: " + id);`
+- **Do NOT catch DppException** in controllers - let Spring Boot handle it automatically
+
+## Tests
+
+- When writing tests, try to test multiple error cases for e.g. validations in one test method or extract the setup code to avoid code duplication.
+- WHe asserting that error messages are thrown, to not test for a fixed error message string, rather check that the error message contains the relevant buzzword.
