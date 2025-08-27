@@ -2,6 +2,12 @@
 
 ## WIP
 
+- Fixed Docker image build configuration
+
+  - Removed invalid buildpack reference (`gcr.io/paketo-buildpacks/java`) from Maven Spring Boot plugin
+  - Now uses default Paketo buildpacks for reliable container image creation
+  - Successfully builds Docker image `info.eecc/weather:0.0.1-SNAPSHOT`
+
 - Comprehensive unit test suite with mocked API responses
 
   - Added Mockito dependency for API mocking
