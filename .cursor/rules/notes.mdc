@@ -12,7 +12,7 @@ The notes form a knowledge base about the project to be used by the AI Agents wo
 ## Read notes before reading anything else
 
 - Before you analyse files, in particular before you start searching files or analysing the general project structure, consult your notes.
-  - The notes contain an `README.md` file which is to help you to quickly find the relevant information. In particular this file points you to the right notes files for specific topics.
+  - The notes contain an `/docs/README.md` file which is to help you to quickly find the relevant information. In particular this file points you to the right notes files for specific topics.
 
 ## Update Notes with new knowledge
 
@@ -21,7 +21,7 @@ The notes form a knowledge base about the project to be used by the AI Agents wo
   - Add a concise summary of what you have learned to your notes file.
   - Update the notes index and make sure that your knowledge is properly referenced so that you can easily find it.
 - After updating the notes, deduplicate content, also across multiple notes files.
-  - Update the `README.md`.
+  - Update the `/docs/README.md`.
   - The index should in particular contain a brief summary of the projects folder structure and information about what files and folders are related to which sub projects/parts/features/functionality.
   - The index should at least contain a link to every other file in the notes directory with a brief description of the purpose and content of that file.
 
@@ -45,4 +45,4 @@ The notes form a knowledge base about the project to be used by the AI Agents wo
 - After adding notes, try to consolidate all `/docs`.
   - Rather keep summaries and key words than long text.
   - Try to reduce the number of notes files by joining files which cover similar topics.
-- Remember to always keep the `README.md` up to date
+- Remember to always keep the `/docs/README.md` up to date
