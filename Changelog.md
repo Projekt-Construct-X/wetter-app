@@ -2,6 +2,17 @@
 
 ## WIP
 
+- Added GitHub Actions CI/CD pipeline
+
+  - Created `.github/workflows/build-and-push.yml` for automated testing and Docker image building
+  - **Test job**: Runs `mvn clean install` on all commits (push to main/develop, PRs to main)
+  - **Build-push job**: Only runs on push to main branch after tests pass
+  - Builds Docker image using Spring Boot buildpacks
+  - Pushes images to GitHub Container Registry (ghcr.io) with two tags:
+    - Commit SHA for unique identification
+    - `latest` tag for main branch releases
+  - Includes Maven dependency caching for faster builds
+
 - Fixed Docker image build configuration
 
   - Removed invalid buildpack reference (`gcr.io/paketo-buildpacks/java`) from Maven Spring Boot plugin
