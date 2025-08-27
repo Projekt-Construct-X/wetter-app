@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: weather-app
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operationsSorter: method
+    tagsSorter: alpha
+  show-actuator: true
+
+logging:
+  level:
+    info.eecc.weather: INFO
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
