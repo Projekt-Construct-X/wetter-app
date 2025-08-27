@@ -1,0 +1,13 @@
+info/eecc/weather/controller/WeatherController.class
+info/eecc/weather/dto/WeatherResponse.class
+info/eecc/weather/exception/WeatherException.class
+info/eecc/weather/dto/WeatherResponse$CurrentWeather.class
+info/eecc/weather/config/OpenApiConfig.class
+info/eecc/weather/dto/WeatherResponse$CurrentWeatherUnits.class
+info/eecc/weather/service/WeatherService.class
+info/eecc/weather/exception/GlobalExceptionHandler.class
+info/eecc/weather/dto/CurrentWeatherDto$CurrentWeatherDtoBuilder.class
+info/eecc/weather/dto/CurrentWeatherDto.class
+info/eecc/weather/config/AppConfig.class
+info/eecc/weather/WeatherApplication.class
+info/eecc/weather/dto/GeocodingResponse.class
