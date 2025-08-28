@@ -15,40 +15,40 @@ import java.util.Map;
 @Slf4j
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(WeatherException.class)
-    public ResponseEntity<Map<String, String>> handleWeatherException(WeatherException ex) {
-        log.error("Weather service error: {}", ex.getMessage());
-        Map<String, String> error = new HashMap<>();
-        String message = ex.getMessage() != null ? ex.getMessage() : "Weather service error";
-        error.put("error", message);
+	@ExceptionHandler(WeatherException.class)
+	public ResponseEntity<Map<String, String>> handleWeatherException(WeatherException ex) {
+		log.error("Weather service error: {}", ex.getMessage());
+		Map<String, String> error = new HashMap<>();
+		String message = ex.getMessage() != null ? ex.getMessage() : "Weather service error";
+		error.put("error", message);
 
-        // Use the HttpStatus from the exception
-        HttpStatus status = ex.getHttpStatus() != null ? ex.getHttpStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
+		// Use the HttpStatus from the exception
+		HttpStatus status = ex.getHttpStatus() != null ? ex.getHttpStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
 
-        return ResponseEntity.status(status).body(error);
-    }
+		return ResponseEntity.status(status).body(error);
+	}
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<Map<String, String>> handleValidationException(ConstraintViolationException ex) {
-        log.error("Validation error: {}", ex.getMessage());
-        Map<String, String> error = new HashMap<>();
-        error.put("error", ex.getMessage());
-        return ResponseEntity.badRequest().body(error);
-    }
+	@ExceptionHandler(ConstraintViolationException.class)
+	public ResponseEntity<Map<String, String>> handleValidationException(ConstraintViolationException ex) {
+		log.error("Validation error: {}", ex.getMessage());
+		Map<String, String> error = new HashMap<>();
+		error.put("error", ex.getMessage());
+		return ResponseEntity.badRequest().body(error);
+	}
 
-    @ExceptionHandler(RestClientException.class)
-    public ResponseEntity<Map<String, String>> handleRestClientException(RestClientException ex) {
-        log.error("External service error: {}", ex.getMessage());
-        Map<String, String> error = new HashMap<>();
-        error.put("error", "Weather service temporarily unavailable");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
-    }
+	@ExceptionHandler(RestClientException.class)
+	public ResponseEntity<Map<String, String>> handleRestClientException(RestClientException ex) {
+		log.error("External service error: {}", ex.getMessage());
+		Map<String, String> error = new HashMap<>();
+		error.put("error", "Weather service temporarily unavailable");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+	}
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
-        log.error("Unexpected error: {}", ex.getMessage(), ex);
-        Map<String, String> error = new HashMap<>();
-        error.put("error", "Internal server error");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
-    }
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
+		log.error("Unexpected error: {}", ex.getMessage(), ex);
+		Map<String, String> error = new HashMap<>();
+		error.put("error", "Internal server error");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+	}
 }
